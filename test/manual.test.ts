@@ -2,11 +2,11 @@ import { BedrockLLM, Intelegence, LocalDataStorage, OpenAIChatBasedLLM, OpenAIIm
 import dotenv from 'dotenv';
 dotenv.config();
 
-it('manual-language', async () => {
+it.skip('manual-language', async () => {
     const AI = new Intelegence({
         language: new OpenAIChatBasedLLM({
             storage: new LocalDataStorage({
-                storagePath: './storage',
+                storagePath: './storage-cache',
             }),
         }),
     });
@@ -16,12 +16,12 @@ it('manual-language', async () => {
     });
 });
 
-it('manual-image', async () => {
+it.skip('manual-image', async () => {
     jest.setTimeout(100_000);
     const AI = new Intelegence({
         image: new OpenAIImageModel({
             storage: new LocalDataStorage({
-                storagePath: './storage',
+                storagePath: './storage-cache',
             }),
         }),
     });
