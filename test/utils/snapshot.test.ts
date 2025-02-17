@@ -12,7 +12,7 @@ beforeEach(() => {
             .toLowerCase() ?? 'unnamed_test';
 
     // Create snapshots directory if it doesn't exist
-    const snapshotDir = path.join(path.dirname(testPath), '__snapshots__');
+    const snapshotDir = path.join(path.dirname(testPath), '__snapshot__');
     if (!fs.existsSync(snapshotDir)) {
         fs.mkdirSync(snapshotDir, { recursive: true });
     }
@@ -20,8 +20,8 @@ beforeEach(() => {
 
 export function snapshot(data: any) {
     const testPath = expect.getState().testPath ?? expect.getState().currentTestName ?? 'test';
-    const snapshotDir = path.join(path.dirname(testPath), '__snapshots__');
-    const snapshotPath = path.join(snapshotDir, `${currentTestName}.snap`);
+    const snapshotDir = path.join(path.dirname(testPath), '__snapshot__');
+    const snapshotPath = path.join(snapshotDir, `${currentTestName}`);
 
     const serializedData = typeof data === 'string' ? data : JSON.stringify(data, null, 2);
 
